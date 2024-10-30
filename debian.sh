@@ -125,7 +125,7 @@ if [ "${WPT_INTERACTIVE,,}" == 'y' ]; then
         sleep 1
     done
 else
-    until git clone --depth 1 --branch=$WPT_BRANCH https://github.com/WPO-Foundation/wptagent.git
+    until git clone --depth 1 --branch=update-nodejs https://github.com/DmitriyStoyanov/WebPageTest.agent wptagent
     do
         sleep 1
     done
