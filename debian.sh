@@ -492,6 +492,7 @@ echo 'if [ -e first.run ]' >> ~/startup.sh
 echo 'then' >> ~/startup.sh
 echo '    screen -dmS init ~/firstrun.sh' >> ~/startup.sh
 echo 'else' >> ~/startup.sh
+echo '    dbus-daemon --session --address=$DBUS_SESSION_BUS_ADDRESS --nofork --nopidfile --syslog-only &' >> ~/startup.sh
 echo '    screen -dmS agent ~/agent.sh' >> ~/startup.sh
 echo 'fi' >> ~/startup.sh
 echo 'sudo service watchdog restart' >> ~/startup.sh
