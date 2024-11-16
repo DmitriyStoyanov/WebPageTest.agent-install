@@ -187,7 +187,6 @@ echo 'if [ -e first.run ]' >> ~/startup.sh
 echo 'then' >> ~/startup.sh
 echo '    screen -dmS init ~/firstrun.sh' >> ~/startup.sh
 echo 'else' >> ~/startup.sh
-echo '    dbus-daemon --session --address=$DBUS_SESSION_BUS_ADDRESS --nofork --nopidfile --syslog-only &' >> ~/startup.sh
 echo '    screen -dmS agent ~/agent.sh' >> ~/startup.sh
 echo 'fi' >> ~/startup.sh
 echo 'sudo service watchdog restart' >> ~/startup.sh
@@ -235,6 +234,7 @@ echo 'sleep 10' >> ~/agent.sh
 # Dummy X display
 echo 'export DISPLAY=:1' >> ~/agent.sh
 echo 'Xorg -noreset +extension GLX +extension RANDR +extension RENDER -logfile /dev/null -config ./misc/xorg.conf :1 &' >> ~/agent.sh
+echo 'dbus-daemon --session --address=$DBUS_SESSION_BUS_ADDRESS --nofork --nopidfile --syslog-only &' >> ~/agent.sh
 
 # Reboot every 24 hours
 echo 'for i in `seq 1 24`' >> ~/agent.sh
