@@ -83,7 +83,7 @@ until sudo apt -y install python3 python3-pip python3-ujson \
         python3-dev libavutil-dev libmp3lame-dev libx264-dev yasm autoconf automake build-essential libass-dev libfreetype6-dev libtheora-dev \
         libtool libvorbis-dev pkg-config texi2html libtext-unidecode-perl python3-numpy python3-scipy perl \
         adb ethtool nodejs cmake git-core libsdl2-dev libva-dev libvdpau-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev texinfo wget \
-        ttf-mscorefonts-installer fonts-noto fonts-roboto fonts-open-sans ffmpeg
+        ttf-mscorefonts-installer fonts-noto fonts-roboto fonts-open-sans ffmpeg upower
 do
     sleep 1
 done
@@ -187,6 +187,7 @@ echo 'if [ -e first.run ]' >> ~/startup.sh
 echo 'then' >> ~/startup.sh
 echo '    screen -dmS init ~/firstrun.sh' >> ~/startup.sh
 echo 'else' >> ~/startup.sh
+echo '    dbus-daemon --session --address=$DBUS_SESSION_BUS_ADDRESS --nofork --nopidfile --syslog-only &' >> ~/startup.sh
 echo '    screen -dmS agent ~/agent.sh' >> ~/startup.sh
 echo 'fi' >> ~/startup.sh
 echo 'sudo service watchdog restart' >> ~/startup.sh
