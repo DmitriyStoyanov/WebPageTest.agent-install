@@ -254,7 +254,7 @@ echo "    cd ~/wptagent" >> ~/agent.sh
 echo "    git pull --rebase origin haprod" >> ~/agent.sh
 
 # Agent invocation
-echo '    python3 wptagent.py -vvvv --beanstalk "10.128.0.3" --exit 60 --alive /tmp/wptagent' >> ~/agent.sh
+echo '    python3 wptagent.py -vvvv --ec2 --exit 60 --alive /tmp/wptagent' >> ~/agent.sh
 
 echo '    echo "Exited, restarting"' >> ~/agent.sh
 echo '    sleep 10' >> ~/agent.sh
