@@ -226,6 +226,7 @@ touch ~/first.run
 echo '#!/bin/sh' > ~/agent.sh
 
 echo 'export DEBIAN_FRONTEND=noninteractive' >> ~/agent.sh
+echo 'export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"' >> ~/agent.sh
 echo 'cd ~/wptagent' >> ~/agent.sh
 
 # Wait for networking to become available
