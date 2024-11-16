@@ -226,7 +226,6 @@ touch ~/first.run
 echo '#!/bin/sh' > ~/agent.sh
 
 echo 'export DEBIAN_FRONTEND=noninteractive' >> ~/agent.sh
-echo 'export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"' >> ~/agent.sh
 echo 'cd ~/wptagent' >> ~/agent.sh
 
 # Wait for networking to become available
@@ -235,6 +234,9 @@ echo 'sleep 10' >> ~/agent.sh
 # Dummy X display
 echo 'export DISPLAY=:1' >> ~/agent.sh
 echo 'Xorg -noreset +extension GLX +extension RANDR +extension RENDER -logfile /dev/null -config ./misc/xorg.conf :1 &' >> ~/agent.sh
+echo 'sudo service dbus start' >> ~/agent.sh
+echo 'export XDG_RUNTIME_DIR=/run/user/$(id -u)' >> ~/agent.sh
+echo 'export DBUS_SESSION_BUS_ADDRESS=unix:path=$XDG_RUNTIME_DIR/bus' >> ~/agent.sh
 echo 'dbus-daemon --session --address=$DBUS_SESSION_BUS_ADDRESS --nofork --nopidfile --syslog-only &' >> ~/agent.sh
 
 # Reboot every 24 hours
